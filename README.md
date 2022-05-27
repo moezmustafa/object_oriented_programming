@@ -1,2 +1,8 @@
 # object_oriented_programming
 all the stuff realted to objected programming , starting with C++ but i will take it to python as well 
+
+## Log of the tasks that i am doing in this repo 
+
+- added folders for the initial things 
+- will be studying the text book to learn the task
+
