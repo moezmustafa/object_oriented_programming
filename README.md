@@ -11,3 +11,6 @@ all the stuff realted to objected programming , starting with C++ but i will tak
 - added a seprate branch 
 
 <br>
+
+- added folders for , inheritence and virtual functions 
+- look into the use of the pure virtual functions 
