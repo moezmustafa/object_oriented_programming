@@ -14,3 +14,9 @@ all the stuff realted to objected programming , starting with C++ but i will tak
 
 - added folders for , inheritence and virtual functions 
 - look into the use of the pure virtual functions 
+
+<br>
+
+-added folders for polymorphism 
+- added files for sfml 
+- did some practice questions for the topics
