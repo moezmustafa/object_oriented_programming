@@ -31,7 +31,7 @@ template<typename moeez>
     }
 //template to find the maximum of the array
 template<typename moeez>
-    float maximum(moeez *arr, int size)
+    float maximum(moeez *arr, int size )
     {
         moeez max = arr[0];
         for(int i=1; i<size; i++)
