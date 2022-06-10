@@ -1,161 +1,209 @@
-#include<iostream>
+#include <iostream>
 #include <string>
-
-
-
-
-using namespace std ;
 
 void spacer()
 {
-    cout << endl ;
+    std::cout << std::endl;
 }
 
-class Date 
+//random flight nnumber generator
+int random_flight_number()
 {
-    int day, month, year ;
-    public:
-        Date(int d, int m, int y)
-        {
-            day = d ;
-            month = m ;
-            year = y ;
-        }
-        void display()
-        {
-            cout << day << "/" << month << "/" << year << endl ;
-        }
+    int flight_number = rand() % 9999 + 1000;
+    return flight_number;
+}
 
-    
-};
-
-class Flight 
+void cleaner()
 {
-    private : 
-        Date date ;
-        string flight_no ;
-        bool international ;
-        int economy_baggage = 4;
-        int business_baggage = 8;
-        int international_baggage = 10;
-    public :
+    system("cls");
+}
 
-        virtual void input() ;
-        virtual void display() ;
-
-
-
-};
-
-
-class international : public Flight : public Date
+void pause()
 {
-    public : 
+    system("pause");
+}
 
-        void input()
-        {
-            cout << "Enter the date of the flight : " ;
-            cin >> date.day >> date.month >> date.year ;
-            cout << "Enter the flight number : " ;
-            cin >> flight_no ;
- 
-            cout << "Enter the number of business baggage : " ;
-            cin >> business_baggage ;
-
-        }
-
-        void display()
-        {
-            cout << "Date of the flight : " ;
-            date.display() ;
-            cout << "Flight number : " << flight_no << endl ;
-            cout << "Type of flight : " << international << endl ;
-         
-            cout << "Number of business baggage : " << business_baggage << endl ;
-            cout << "Number of international baggage : " << international_baggage << endl ;
-        }
-
-            
-};
-
-class economy : public Flight : public Date
+class Flight
 {
-    public : 
+public:
 
-    void input()
+    int flightNumber = random_flight_number();
+    int seats = 200;
+    std::string departure_city;
+    std::string arrival_city;
+    std::string departure_time;
+    std::string arrival_time;
+    std::string date;
+    std::string airline = "UwU Airlines";
+
+
+
+    virtual void input_details()
     {
-        cout << "Enter the date of the flight : " ;
-        cin >> date.day >> date.month >> date.year ;
-        cout << "Enter the flight number : " ;
-        cin >> flight_no ;
- 
-        cout << "Enter the number of economy baggage : " ;
-        cin >> economy_baggage ;
+        std::cout << "Enter the departure city : ";
+        std::cin >> departure_city;
+        std::cout << "Enter the arrival city : ";
+        std::cin >> arrival_city;
+        std::cout << "Enter the departure time : ";
+        std::cin >> departure_time;
+        std::cout << "Enter the arrival time : ";
+        std::cin >> arrival_time;
+        std::cout << "Enter the date : ";
+        std::cin >> date;
 
     }
-    void display()
+    virtual void display_details()
     {
-        cout << "Date of the flight : " ;
-        date.display() ;
-        cout << "Flight number : " << flight_no << endl ;
-        cout << "Type of flight : " << economy << endl ;
-     
-        cout << "Number of economy baggage : " << economy_baggage << endl ;
-        cout << "Number of international baggage : " << international_baggage << endl ;
+        std::cout << "Flight Number : " << flightNumber << std::endl;
+        std::cout << "Departure City : " << departure_city << std::endl;
+        std::cout << "Arrival City : " << arrival_city << std::endl;
+        std::cout << "Departure Time : " << departure_time << std::endl;
+        std::cout << "Arrival Time : " << arrival_time << std::endl;
+        std::cout << "Date : " << date << std::endl;
+        std::cout << "Airline : " << airline << std::endl;
+
+        std::cout << "Seats : " << seats << std::endl;
     }
 
-            
+};
+
+class DomesticFlight : public Flight
+{
+    int baggage_allowance = 5;
+
+public:
+    void input_details()
+    {
+        std::cout << "Enter the departure city : ";
+        std::cin >> departure_city;
+        std::cout << "Enter the arrival city : ";
+        std::cin >> arrival_city;
+        std::cout << "Enter the departure time : ";
+        std::cin >> departure_time;
+        std::cout << "Enter the arrival time : ";
+        std::cin >> arrival_time;
+        std::cout << "Enter the date : ";
+        std::cin >> date;
+    }
+
+    void display_details()
+    {
+        std::cout << "Flight Number : " << flightNumber << std::endl;
+        std::cout << "Departure City : " << departure_city << std::endl;
+        std::cout << "Arrival City : " << arrival_city << std::endl;
+        std::cout << "Departure Time : " << departure_time << std::endl;
+        std::cout << "Arrival Time : " << arrival_time << std::endl;
+        std::cout << "Date : " << date << std::endl;
+        std::cout << "Airline : " << airline << std::endl;
+        std::cout << "Baggage Allowance : " << baggage_allowance << std::endl;
+        std::cout << "Seats : " << seats << std::endl;
+    }
+
+};
+
+class internationalFlight : public Flight
+{
+    bool direct_flight = true;
+
+    void input_details()
+    {
+        std::cout << "Enter the departure city : ";
+        std::cin >> departure_city;
+        std::cout << "Enter the arrival city : ";
+        std::cin >> arrival_city;
+        std::cout << "Enter the departure time : ";
+        std::cin >> departure_time;
+        std::cout << "Enter the arrival time : ";
+        std::cin >> arrival_time;
+        std::cout << "Enter the date : ";
+        std::cin >> date;
+    }
+
+    void display_details()
+    {
+        std::cout << "  Flight Number : " << flightNumber << std::endl;
+        std::cout << "  Departure City : " << departure_city << std::endl;
+        std::cout << "  Arrival City : " << arrival_city << std::endl;
+        std::cout << "  Departure Time : " << departure_time << std::endl;
+        std::cout << "  Arrival Time : " << arrival_time << std::endl;
+        std::cout << "  Date : " << date << std::endl;
+        std::cout << "  Airline : " << airline << std::endl;
+        std::cout << "  Direct Flight : " << direct_flight << std::endl;
+        std::cout << "  Seats : " << seats << std::endl;
+    }
 };
 
 int main()
 {
 
-    system("color 0B") ;
-    spacer() ;
-    spacer() ;
-    spacer() ;
+    system("TITLE Moeez_Jamshed's_Flight_Booking_System");
+    system("color 0B");
 
-    cout << "Welcome to the flight booking system" << endl ;
-    spacer() ;
-    cout << "Please enter the date of your flight" << endl ;
-    spacer() ;
-    int day, month, year ;
-    cout << "Day : " ;
-    cin >> day ;
-    cout << "Month : " ;
-    cin >> month ;
-    cout << "Year : " ;
-    cin >> year ;
-    spacer() ;
-    //flight type (international, economy)
-    cout << "Please enter the type of flight you wish to book" << endl ;
-    spacer() ;
-    string flight_type ;
-    cout << "Enter international or economy : " ;
-    cin >> flight_type ;
-    spacer() ;
+    int counter = 0;
+    int choice;
 
-    // if(flight_type == "international")
-    // {
-    //     Flight *f[5] = new international ;
-    //     f[0]->input() ;
-    //     f[] ->display() ;
-    // }
-    // else if(flight_type == "economy")
-    // {
-    //     Flight *f[5] = new economy ;
-    //     f->input() ;
-    //     f->display() ;
-    // }
-    // else
-    // {
-    //     cout << "Invalid flight type" << endl ;
-    // }
+
+    Flight* f[5];
+
+   
+
+    do {
+        spacer();
+        spacer();
+        spacer();
+
+        std::cout << "  Are you a domestic or international flight?" << std::endl;
+        std::cout << "  1. Domestic" << std::endl;
+        std::cout << "  2. International" << std::endl;
+        std::cout << "  3. Exit" << std::endl;
+        std::cin >> choice;
+        
+
+
+        spacer();
+        spacer();
+        spacer();
+        spacer();
 
 
 
+        switch (choice)
+        {
+        case 1:
+        {
+            f[0] = new DomesticFlight();
+            f[0]->input_details();
+            cleaner();
+            spacer();
+            spacer();
+            spacer();
+            f[0]->display_details();
+            pause();
+            cleaner();
+            break;
+        }
+
+        case 2:
+        {
+            f[1] = new internationalFlight();
+            f[1]->input_details();
+            cleaner();
+            spacer();
+            spacer();
+            spacer();
+            f[1]->display_details();
+            pause();
+            cleaner();
+            break;
+        }
+        }
+
+    } while (choice != 3 || counter != 5);
+
+
+    spacer();
+    spacer();
+    spacer();
+    spacer();
 
 }
-
-
-//adinaidnfasdf 
